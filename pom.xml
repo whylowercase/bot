@@ -30,13 +30,31 @@
     </dependencies>
 
     <build>
-        <finalName>mytest</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>mytest</finalName>
+
     </build>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>http://124.71.180.31:9000</sonar.host.url>
+            </properties>
+        </profile>
+    </profiles>
+
 
 </project>
